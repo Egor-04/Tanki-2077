@@ -17,6 +17,7 @@ public class LocalPlayer : MonoBehaviour
     private void Start()
     {
         _photonView = GetComponent<PhotonView>();
+        transform.GetChild(0).transform.SetParent(null);
     }
 
     private void Update()

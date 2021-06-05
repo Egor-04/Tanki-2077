@@ -14,8 +14,6 @@ public class LocalCamera : MonoBehaviour
         {
             LocalPlayer = GetComponent<LocalPlayer>();
             if (LocalPlayer == null) { Destroy(gameObject); return; }
-            transform.parent = null;
-            return;
         }
 
         _playerVector3 = LocalPlayer.transform.position;
