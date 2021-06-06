@@ -25,8 +25,13 @@ public class Bullet : MonoBehaviourPunCallback
     {
         if (collision.gameObject.tag == "Player")
         {
-
+            Destroy(gameObject);
             collision.gameObject.GetComponent<Player>().TakeDamage(Damage);
+        }
+
+        if (collision.gameObject.tag == "Water")
+        {
+            Destroy(gameObject);
         }
     }
 }

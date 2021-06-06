@@ -15,6 +15,7 @@ public class LocalPlayer : MonoBehaviour
     [SerializeField] private GameObject _bullet;
     [SerializeField] private Text _coordinatesText;
     [SerializeField] private Text _healText;
+    [SerializeField] private Text _cooldownTimerText;
 
     public int PlayerHp;
 
@@ -35,6 +36,7 @@ public class LocalPlayer : MonoBehaviour
     {
         if (_photonView.IsMine)
         {
+            _cooldownTimerText.text = string.Format("{0:0}", _cooldownEnd) + "Sec";
             _healText.text = PlayerHp + " hp";
             _coordinatesText.text = string.Format("{0:0}", transform.position.x)  + " / " + string.Format("{0:0}", transform.position.y); 
             
@@ -58,6 +60,7 @@ public class LocalPlayer : MonoBehaviour
                 }
             }
             _cooldownEnd -= Time.deltaTime;
+            
 
             if (PlayerHp > 100)
             {
