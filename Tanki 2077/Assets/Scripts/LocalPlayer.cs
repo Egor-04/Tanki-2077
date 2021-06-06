@@ -14,6 +14,9 @@ public class LocalPlayer : MonoBehaviour
     [SerializeField] private Transform _shotPoint;
     [SerializeField] private GameObject _bullet;
     [SerializeField] private Text _coordinatesText;
+    [SerializeField] private Text _healText;
+
+    public int PlayerHp;
 
     public Transform Tower;
     public Camera camera;
@@ -32,6 +35,7 @@ public class LocalPlayer : MonoBehaviour
     {
         if (_photonView.IsMine)
         {
+            _healText.text = PlayerHp + " hp";
             _coordinatesText.text = string.Format("{0:0}", transform.position.x)  + " / " + string.Format("{0:0}", transform.position.y); 
             
             float vertical = Input.GetAxis("Vertical") * _speed * Time.deltaTime;
@@ -54,6 +58,11 @@ public class LocalPlayer : MonoBehaviour
                 }
             }
             _cooldownEnd -= Time.deltaTime;
+
+            if (PlayerHp > 100)
+            {
+                PlayerHp = 100;
+            }
 
         }
     }

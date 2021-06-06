@@ -2,11 +2,12 @@ using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Player : MonoBehaviourPun, IPunObservable
-{ 
+public class Player : MonoBehaviourPunCallbacks, IPunObservable
+{
+    public GameObject Canvas;
     public LocalPlayer LocalPlayer;
-    public int PlayerHp;
     public bool IsDead;
 
 
@@ -15,6 +16,7 @@ public class Player : MonoBehaviourPun, IPunObservable
         if (!photonView.IsMine)
         {
             LocalPlayer.enabled = false;
+            Destroy(Canvas);
             Destroy(LocalPlayer.camera.gameObject);
         }
     }
@@ -23,13 +25,13 @@ public class Player : MonoBehaviourPun, IPunObservable
     {
         if (photonView.IsMine)
         {
-            if (PlayerHp <= 0)
+            if (LocalPlayer.PlayerHp <= 0)
             {
                 Dead();
-                PlayerHp = 100;
+                LocalPlayer.PlayerHp = 100;
             }
         }
-        
+
     }
 
     public void Dead()
@@ -39,18 +41,29 @@ public class Player : MonoBehaviourPun, IPunObservable
             if (IsDead == false)
             {
                 PhotonNetwork.Destroy(gameObject);
-                IsDead = true;
+                PhotonNetwork.LeaveRoom();
             }
         }
     }
+
+    public override void OnLeftRoom()
+    {
+        SceneManager.LoadScene(0);
+    }
+
 
     [PunRPC]
     public void TakeDamage(int damage)
     {
         if (photonView.IsMine)
-        {
-            PlayerHp -= damage;
-        }
+            LocalPlayer.PlayerHp -= damage;
+    }
+
+    [PunRPC]
+    public void ReplenishHealth(int heartiness)
+    {
+        if (photonView.IsMine)
+            LocalPlayer.PlayerHp += heartiness;
     }
 
 
@@ -58,12 +71,12 @@ public class Player : MonoBehaviourPun, IPunObservable
     {
         if (stream.IsWriting)
         {
-            stream.SendNext(PlayerHp);
+            stream.SendNext(LocalPlayer.PlayerHp);
             stream.SendNext(LocalPlayer.Tower.rotation);
         }
         else
         {
-            PlayerHp = (int)stream.ReceiveNext();
+            LocalPlayer.PlayerHp = (int)stream.ReceiveNext();
             LocalPlayer.Tower.rotation = (Quaternion)stream.ReceiveNext();
         }
     }
