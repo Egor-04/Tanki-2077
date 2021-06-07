@@ -46342,8 +46342,8 @@ MonoBehaviour:
   - {fileID: 1391026543}
   - {fileID: 1566848954}
   _heal: {fileID: 8849439532380758210, guid: 3ad722982f4258b4891dbbf78c6f8684, type: 3}
-  _startTimer: 20
-  _endTimer: 20
+  _startTimer: 30
+  _endTimer: 30
 --- !u!114 &812077367
 MonoBehaviour:
   m_ObjectHideFlags: 0

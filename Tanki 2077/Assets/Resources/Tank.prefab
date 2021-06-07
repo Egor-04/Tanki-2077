@@ -5213,7 +5213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
-  _speedRotation: 70
+  _speedRotation: 75
   _cooldown: 3
   _cooldownEnd: 0
   _shotPoint: {fileID: 2912674846458081120}
