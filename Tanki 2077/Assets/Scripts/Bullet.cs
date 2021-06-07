@@ -33,6 +33,11 @@ public class Bullet : MonoBehaviourPunCallback
         {
             Destroy(gameObject);
         }
+
+        if (collision.gameObject.tag == "Decor")
+        {
+            Destroy(gameObject);
+        }
     }
 }
 

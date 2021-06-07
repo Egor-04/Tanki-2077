@@ -24,7 +24,7 @@ public class LocalPlayer : MonoBehaviour
 
 
     private PhotonView _photonView;
-
+    private Rigidbody2D _rigidbody2D;
 
     private void Start()
     {
@@ -38,7 +38,7 @@ public class LocalPlayer : MonoBehaviour
         {
             _cooldownTimerText.text = string.Format("{0:0}", _cooldownEnd) + "Sec";
             _healText.text = PlayerHp + " hp";
-            _coordinatesText.text = string.Format("{0:0}", transform.position.x)  + " / " + string.Format("{0:0}", transform.position.y); 
+            _coordinatesText.text = "coordinates: " + string.Format("{0:0}", transform.position.x)  + " / " + string.Format("{0:0}", transform.position.y); 
             
             float vertical = Input.GetAxis("Vertical") * _speed * Time.deltaTime;
             transform.Translate(new Vector3(0f, vertical, 0f));
@@ -58,6 +58,8 @@ public class LocalPlayer : MonoBehaviour
                     PhotonNetwork.Instantiate(_bullet.name, _shotPoint.position, _shotPoint.rotation);
                     _cooldownEnd = _cooldown;
                 }
+
+                if (_cooldownEnd < 0) { _cooldownEnd = 0; }
             }
             _cooldownEnd -= Time.deltaTime;
             
