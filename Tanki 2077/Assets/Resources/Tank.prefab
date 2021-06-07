@@ -5199,6 +5199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Canvas: {fileID: 2787624541803399708}
   LocalPlayer: {fileID: 9163930555641602255}
+  Spawner: {fileID: 0}
   IsDead: 0
 --- !u!114 &9163930555641602255
 MonoBehaviour:

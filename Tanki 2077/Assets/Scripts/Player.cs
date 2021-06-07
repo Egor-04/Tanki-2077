@@ -8,11 +8,14 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 {
     public GameObject Canvas;
     public LocalPlayer LocalPlayer;
+    public GameObject Spawner;
     public bool IsDead;
 
 
     private void Awake()
     {
+        Spawner = GameObject.FindGameObjectWithTag("Respawn");
+
         if (!photonView.IsMine)
         {
             LocalPlayer.enabled = false;
@@ -41,7 +44,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             if (IsDead == false)
             {
                 PhotonNetwork.Destroy(gameObject);
-                PhotonNetwork.LeaveRoom();
+                Spawner.GetComponent<SpawnPlayers>().Spawn();
             }
         }
     }

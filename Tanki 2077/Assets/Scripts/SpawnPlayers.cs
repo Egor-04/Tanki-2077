@@ -13,10 +13,13 @@ public class SpawnPlayers : MonoBehaviour
 
     private void Start()
     {
+        Spawn();
+    }
 
+    public void Spawn()
+    {
         _randomPoint = Random.Range(0, _spawnPoint.Length);
         PhotonNetwork.Instantiate(Player.name, _spawnPoint[_randomPoint].position, Quaternion.identity);
-        
     }
 
 }
