@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 12
-  _flightTime: 2
+  _flightTime: 2.5
   Damage: 25
   Player: {fileID: 8014152044296753442, guid: 49626a2ab78391642ba7d2314fbd99a2, type: 3}
 --- !u!114 &2693635019356799635
