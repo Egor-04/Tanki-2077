@@ -5,13 +5,21 @@ using UnityEngine;
 
 public class SpawnPlayers : MonoBehaviour
 {
+    [SerializeField] private Transform[] _spawnPoint;
+
     public GameObject Player;
-    public float MinX, MinY, MaxX, MaxY;
+
+    private int _randomPoint;
 
     private void Start()
     {
-        Vector2 RandomPosition = new Vector2 (Random.Range(MinX, MaxY), Random.Range(MinY, MaxX));
-        PhotonNetwork.Instantiate(Player.name, RandomPosition, Quaternion.identity); 
+        Spawn();
+    }
+
+    public void Spawn()
+    {
+        _randomPoint = Random.Range(0, _spawnPoint.Length);
+        PhotonNetwork.Instantiate(Player.name, _spawnPoint[_randomPoint].position, Quaternion.identity);
     }
 
 }

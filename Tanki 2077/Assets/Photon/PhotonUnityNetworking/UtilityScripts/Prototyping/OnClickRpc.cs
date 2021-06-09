@@ -20,7 +20,7 @@ namespace Photon.Pun.UtilityScripts
     /// This component will instantiate a network GameObject when in a room and the user click on that component's GameObject.
     /// Uses PhysicsRaycaster for positioning.
     /// </summary>
-    public class OnClickRpc : MonoBehaviourPun, IPointerClickHandler
+    public class OnClickRpc : MonoBehaviourPunCallback, IPointerClickHandler
     {
         public PointerEventData.InputButton Button;
         public KeyCode ModifierKey;
