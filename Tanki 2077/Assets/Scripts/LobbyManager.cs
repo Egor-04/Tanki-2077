@@ -1,6 +1,7 @@
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
@@ -10,7 +11,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         PhotonNetwork.AutomaticallySyncScene = true;
         PhotonNetwork.NickName = "Player" + Random.Range(1000, 9999);
         Debug.Log(PhotonNetwork.NickName);
-        PhotonNetwork.GameVersion = "0.1";
+        PhotonNetwork.GameVersion = Application.version;
         PhotonNetwork.ConnectUsingSettings();
 
     }
