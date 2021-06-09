@@ -28,21 +28,11 @@ MonoBehaviour:
     EnableLobbyStatistics: 0
     NetworkLogging: 1
   DevRegion: ru
-  PunLogging: 0
+  PunLogging: 2
   EnableSupportLogger: 0
   RunInBackground: 1
   StartInOfflineMode: 0
-  RpcList:
-  - ClickRpc
-  - DestroyRpc
-<<<<<<< HEAD
-  - DestroySpaceship
-  - Fire
-  - RespawnSpaceship
-=======
-  - ReplenishHealth
-  - TakeDamage
->>>>>>> main
+  RpcList: []
   DisableAutoOpenWizard: 1
   ShowSettings: 1
-  DevRegionSetOnce: 1
+  DevRegionSetOnce: 0
