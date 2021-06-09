@@ -23,18 +23,18 @@ public class Bullet : MonoBehaviourPunCallback
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
             collision.gameObject.GetComponent<Player>().TakeDamage(Damage);
         }
 
-        if (collision.gameObject.tag == "Water")
+        if (collision.gameObject.CompareTag("Water"))
         {
             Destroy(gameObject);
         }
 
-        if (collision.gameObject.tag == "Decor")
+        if (collision.gameObject.CompareTag("Decor"))
         {
             Destroy(gameObject);
         }
