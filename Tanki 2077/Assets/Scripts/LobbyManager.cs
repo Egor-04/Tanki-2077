@@ -45,7 +45,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         PhotonNetwork.CreateRoom(_enterRoomName.text, roomOptions);
     }
 
-    public void JoinRoom()
+    public void JoinRandomRoom()
     {
         PhotonNetwork.JoinRandomRoom();
     }
