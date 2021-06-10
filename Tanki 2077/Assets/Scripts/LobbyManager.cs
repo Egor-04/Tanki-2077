@@ -21,7 +21,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         Debug.Log(PhotonNetwork.NickName);
         PhotonNetwork.GameVersion = Application.version;
         PhotonNetwork.ConnectUsingSettings();
-
     }
 
     public void ActivatePanel(GameObject panel)
