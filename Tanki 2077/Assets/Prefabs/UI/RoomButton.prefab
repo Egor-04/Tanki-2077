@@ -1021,6 +1021,7 @@ MonoBehaviour:
   MaxPlayers: {fileID: 8896856920187868419}
   IsOpen: {fileID: 8896856919557735089}
   IsVisible: {fileID: 7395591335986964977}
+  RoomExist: 0
 --- !u!1 &8896856920661776935
 GameObject:
   m_ObjectHideFlags: 0
